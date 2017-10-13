@@ -1,0 +1,54 @@
+<!--index.wxml-->
+<image src='/images/logo2.png' class="logo" hidden='{{logoHidden}}'></image>
+<view class="container">
+    <view class="list"  wx:for="{{servers}}" wx:key="item" bindtap="tap" bindlongpress="longtap" data-index="{{index}}" data-issuer="{{item.issuer}}" data-code="{{item.code}}" data-username="{{item.username}}" data-secret="{{item.secret}}">
+        <view class="list_left">
+          <view class='title'>{{item.issuer}}</view>
+          <view class='code' style='color:{{codeColor}}'>
+              {{item.code}}
+          </view>
+          <view class="address">{{item.username}}</view>
+        </view>
+        <view class="list_right game_time">
+            <view class="hold">
+                <view class="pie pie1" style='-webkit-transform:rotate({{pie1Data}}deg);background:{{pie1Background}}'></view>
+            </view>
+            <view class="hold">
+                <view class="pie pie2" style='-webkit-transform:rotate({{pie2Data}}deg);background:{{pieBackground}}'></view>
+            </view>
+            <view class='bg'></view>
+        </view>
+    </view>
+    <view class='choose' bindtap="actionSheetTap">
+        <image src='/images/addition.png'></image>
+    </view>
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange" class="footer">
+        <block wx:for-items="{{actionSheetItems}}" wx:for-index="idx" wx:key="item">
+            <action-sheet-item class="item" bindtap="bind{{idx}}">
+              <view class='chooselist'>
+                  <image src='{{icon[idx]}}'></image>{{item}}
+              </view>
+            </action-sheet-item>
+        </block>
+        <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+    </action-sheet>
+    
+    <view class="drawer_box" hidden="{{hiddenmodalput}}">
+      <view class='drawer_view'>
+        <view class="drawer_title">编辑{{drawerTitle}}名称</view>
+        <input type='text' placeholder="请编辑{{drawerTitle}}的名称" placeholder-style="color:##888888;font-size:30rpx;" bindinput="{{drawerTitle=='网站'?'inputIssuer':'inputUser'}}" value="{{drawerTitle=='网站'?editData.issuer:editData.username}}"/>
+        <view class='boxFooter'>
+            <view class="btn" catchtap="powerClose">取消</view>
+            <view class="btn" catchtap="{{drawerTitle=='网站'?'openIssuer':'openUser'}}">保存</view>
+        </view>
+      </view> 
+    </view>
+    <view class="editAddrss" style='top:{{editTop}}rpx;' hidden="{{editHidder}}">
+        <view class="editList">{{editData.issuer}}-{{editData.username}}</view>
+        <view class="editList" hover-class="editHover" bindtap='copyCode' style='color:{{editCodeColor}}'>{{editCodeTitle}}</view>
+        <view class="editList" hover-class="editHover" bindtap='editUser'>编辑账号名称</view>
+        <view class="editList" hover-class="editHover" bindtap='editIssuer'>编辑网站名称</view>
+        <view class="editList" hover-class="editHover" bindtap='deleteCode'>删除</view>
+    </view>  
+</view>
+

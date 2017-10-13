@@ -1,0 +1,47 @@
+/* pages/backup/qrcode.wxss */
+page{
+  background:  #E5E5E5;
+  height: 100%;
+}
+.qrcode_view{
+  width: 100%;
+  height: 100%;
+}
+.viewAdd .qrcode{
+  width: 400rpx;
+  height: 400rpx;
+  display: block;
+  margin: 0 auto;
+}
+.qrcode_view .title{
+  font-size: 28rpx;
+  color: #E57066;
+  line-height: 40rpx;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-top: 40rpx;
+}
+
+.qrcode_view .goQrcode{
+  position:absolute;
+  bottom: 118rpx;
+  width: 90%;
+  left: 5%;
+}
+
+.qrcode_view .viewAdd{
+  padding: 20rpx;
+  margin:80rpx auto 0;
+  position: relative;
+}
+
+.qrcode_view .attention{
+  font-size: 28rpx;
+  color: #E57066;
+  position:absolute;
+  bottom: 28rpx;
+  left: 10%;
+  width: 80%;
+  text-align: center;
+}

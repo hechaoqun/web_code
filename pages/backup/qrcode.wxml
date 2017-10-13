@@ -1,0 +1,10 @@
+<!--pages/backup/qrcode.wxml-->
+<view class="qrcode_view">
+  <text class="title">二维码泄露可能导致双重认证泄露，请谨慎保存！</text>
+  <view class='viewAdd'>
+        <canvas bindtap="clickImg" hidden="{{canvasHidden}}" class="qrcodeCanvas" canvas-id="mycanvas" style="width: 686rpx;height: 686rpx;background:#fff;"/>  
+   <!-- <image id="qrcode"></image>  -->
+  </view>
+  <button style="color: white; background: {{qrcodeColor}};" class="goQrcode" bindtap="previewImg">{{qrcodeTitle}}</button>
+  <text class="attention">注!(点击保存的二维码只能通过扫描识别,不能直接通过相册识别，可进行手机截屏保存)</text>
+</view>

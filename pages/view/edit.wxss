@@ -1,0 +1,33 @@
+/* pages/view/edit.wxss */
+page{
+  background:  #EFEFF4;
+}
+.flexBox{
+  margin-top: 30rpx;
+}
+.flexBox .card{
+  width: 100%;
+  height: 266rpx;
+  background: #fff;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 60rpx;
+}
+.flexBox .card input{
+  width: 100%;
+  height: 88rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  color: #353535;
+}
+.flexBox .card input:nth-child(3){
+  border:0;
+}
+.flexBox .btn-block{
+  margin:0 40rpx;
+  height: 94rpx;
+  border-radius: 10rpx;
+  color: #fff;
+}
+.other-button-hover{
+  background-color: blue;
+}

@@ -1,0 +1,13 @@
+<!--pages/view/edit.wxml-->
+<view class="flexBox">
+  <form name="form" catchsubmit="submitData">
+    <view class="card mainWhite">
+      <input value="{{issuer}}" placeholder="输入网站名称" name="issuer" placeholder-style="color:#B2B2B2" confirm-type="next" bindconfirm="next1" bindinput="issuerBlur"/>
+      <input value="{{username}}" placeholder="输入账户名称" name="username" placeholder-style="color:#B2B2B2" confirm-type="next" focus="{{focus01}}" bindconfirm="next2"  bindinput="usernameBlur"/>
+      <input value="{{servers}}" placeholder="输入您的密钥" name="servers" placeholder-style="color:#B2B2B2" confirm-type="done" focus="{{focus02}}" bindinput="serversBlur"/>
+    </view>
+    <view class="btn-block">
+        <button form-type="submit" hover-class="other-button-hover" style="opacity: {{opacity}};color: white; background-color: #368AE5;" disabled="{{disabled}}" loading="{{loginLoading}}" >添加</button>
+    </view>
+  </form>
+</view>
