@@ -211,13 +211,13 @@ Page({
           if (old_servers != '[]' && old_servers != '') {
             var arr = old_servers;
             new_servers.forEach(function (NewVal, NewInd, NewArr) {
-              arr.push({
+              arr.unshift({
                 secret: NewVal.s,
                 username: NewVal.u,
                 issuer: NewVal.i
               })
             })
-            var servers = that.arrayDistinct(arr).reverse();
+            var servers = that.arrayDistinct(arr);
 
           } else {
             var servers = [];
@@ -331,7 +331,7 @@ Page({
     }
     var servers = JSON.parse(old_data);
     var old_length = servers.length;
-    servers.push({
+    servers.unshift({
       secret: data.secret,
       username: data.username,
       issuer: data.issuer
@@ -346,7 +346,7 @@ Page({
         }
       })
     } else {
-      var servers_str = JSON.stringify(servers.reverse());
+      var servers_str = JSON.stringify(servers);
       wx.setStorageSync('servers', servers_str);
       wx.showToast({
         "title": "添加成功",
@@ -430,7 +430,7 @@ Page({
   //长按事件
   longtap: function (e) {
     var that = this;
-    console.log(e)
+
     if (e.currentTarget.offsetTop<=20){
       that.setData({
         editHidder:false,

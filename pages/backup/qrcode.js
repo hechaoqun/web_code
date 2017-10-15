@@ -48,7 +48,7 @@ Page({
     var size = that.setCanvasSize();
     console.log(size)
     //图片的信息
-    that.createQrCode(JSON.stringify({ source: 'shuzibi', key: Base64.base64.encode(text) }), "mycanvas", size.w, size.h);
+    that.createQrCode(JSON.stringify({key: Base64.base64.encode(text)}), "mycanvas", size.w, size.h);
 
   },
   //生成二维码

@@ -113,16 +113,18 @@ Page({
   setCodeData: function (data) {
     var that = this;
     var old_data = wx.getStorageSync('servers');
+    
     if (old_data == '') {
       old_data = '[]'
     }
     var servers = JSON.parse(old_data);
     var old_length = servers.length;
-    servers.push({
+    servers.unshift({
       secret: data.secret,
       username: data.username,
       issuer: data.issuer
     })
+
     var new_length = servers.length;
     if (new_length == old_length) {
       wx.showModal({
@@ -133,7 +135,7 @@ Page({
         }
       })
     } else {
-      var servers_str = JSON.stringify(servers.reverse());
+      var servers_str = JSON.stringify(servers);
       wx.setStorageSync('servers', servers_str);
       wx.showToast({
         "title": "添加成功",
