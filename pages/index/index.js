@@ -4,13 +4,12 @@
 const app = getApp();
 const totp = require('../../utils/js/totp');
 const Base64 = require('../../utils/js/common');
+const Base32 = require('../../utils/js/base32');
 Page({
   data: {
     actionSheetHidden: true,
     actionSheetItems: ['扫描二维码', '手动添加', '数据备份', '数据恢复'],
     icon: ['/images/scanning_copy.png','/images/Group_Copy.png','/images/backUp.png','/images/Shape.png'],
-    //logo 的显示
-    logoHidden:false,
     //可以通过hidden是否掩藏弹出框的属性，来指定那个弹出框
     hiddenmodalput: true,
     //code 的生成数据
@@ -126,7 +125,7 @@ Page({
         if (issuerData != undefined){
           var issuer = issuerData;
         }else{
-          var issuer = username.split('@')[1];
+          var issuer = username.split('@')[username.split('@').length-1];
         }
 
         var secret = data.split("?")[1].split("&")[0].split("=")[1];
@@ -143,7 +142,6 @@ Page({
           })
         }else{
           var old_servers = wx.getStorageSync('servers');
-          console.log(old_servers);
           that.setCodeData({ 'secret': secret, 'issuer': issuer, 'username': username });
           that.refreshData();
           if (JSON.parse(wx.getStorageSync('servers')).length == 1 && old_servers!='[]') {
@@ -619,6 +617,27 @@ Page({
       }
     })
 
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '双重验证',
+      path: '/pages/index/index',
+      success: function (res) {
+        wx.showToast({
+          "title": "转发成功",
+          "icon": "success",
+          complete: function (e) {
+            console.log('转发成功')
+          }
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })
 

@@ -1,5 +1,4 @@
 <!--index.wxml-->
-<image src='/images/logo2.png' class="logo" hidden='{{logoHidden}}'></image>
 <view class="container">
     <view class="list"  wx:for="{{servers}}" wx:key="item" bindtap="tap" bindlongpress="longtap" data-index="{{index}}" data-issuer="{{item.issuer}}" data-code="{{item.code}}" data-username="{{item.username}}" data-secret="{{item.secret}}">
         <view class="list_left">

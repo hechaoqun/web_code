@@ -36,6 +36,15 @@ Page({
           })
         }
       })
+    } else if (e.detail.value.servers.length < 16){
+      wx.showModal({
+        title: '该密钥不符合要求',
+        content: '请重新填写正确的密钥！',
+        showCancel: false,
+        success: function (res) {
+          
+        }
+      })
     }else{
       that.setCodeData({ 'secret': e.detail.value.servers, 'issuer': e.detail.value.issuer, 'username': e.detail.value.username });
     }
@@ -113,7 +122,7 @@ Page({
   setCodeData: function (data) {
     var that = this;
     var old_data = wx.getStorageSync('servers');
-    
+
     if (old_data == '') {
       old_data = '[]'
     }
@@ -186,6 +195,21 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    return {
+      title: '双重验证',
+      path: '/pages/index/index',
+      success: function (res) {
+        wx.showToast({
+          "title": "转发成功",
+          "icon": "success",
+          complete: function (e) {
+            console.log('转发成功')
+          }
+        })
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

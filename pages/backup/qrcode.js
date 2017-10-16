@@ -24,6 +24,9 @@ Page({
   getServers:function(){
     var that = this;
     var servers = wx.getStorageSync('servers');
+    if (servers==''){
+      return;
+    }
     servers = JSON.parse(servers);
     var server = [];
     servers.forEach(function (value, index, array) {
